@@ -1,0 +1,22 @@
+sys_path: .
+stacker_bucket: ${stacker_bucket}
+
+mappings:
+  AmiMap:
+    us-east-1:
+      amazon: ami-c58c1dd3
+    us-east-2:
+      amazon: ami-4191b524
+    us-west-2:
+      amazon: ami-4836a428
+
+general_parameters: &general_parameters
+  BaseDomain: ${BaseDomain}
+  InternalDomain: ${InternalDomain}
+
+stacks:
+  - name: CFN
+    class_path: blueprints.cfn.CFN
+    enabled: true
+    variables:
+      << : *general_parameters
