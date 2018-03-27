@@ -1,0 +1,55 @@
+{
+    "Mappings": {
+        "AmiMap": {
+            "us-east-1": {
+                "amazon": "ami-c58c1dd3"
+            },
+            "us-east-2": {
+                "amazon": "ami-4191b524"
+            },
+            "us-west-2": {
+                "amazon": "ami-4836a428"
+            }
+        }
+    },
+    "Outputs": {
+        "S3BucketSecureURL": {
+            "Description": "Name of S3 bucket to hold website content",
+            "Value": {
+                "Fn::Join": [
+                    "",
+                    [
+                        "http://",
+                        {
+                            "Fn::GetAtt": [
+                                "S3Bucket",
+                                "DomainName"
+                            ]
+                        }
+                    ]
+                ]
+            }
+        },
+        "WebsiteURL": {
+            "Description": "URL for website hosted on S3",
+            "Value": {
+                "Fn::GetAtt": [
+                    "S3Bucket",
+                    "WebsiteURL"
+                ]
+            }
+        }
+    },
+    "Resources": {
+        "S3Bucket": {
+            "Properties": {
+                "AccessControl": "PublicRead",
+                "WebsiteConfiguration": {
+                    "ErrorDocument": "error.html",
+                    "IndexDocument": "index.html"
+                }
+            },
+            "Type": "AWS::S3::Bucket"
+        }
+    }
+}

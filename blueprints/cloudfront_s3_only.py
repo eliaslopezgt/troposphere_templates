@@ -9,9 +9,10 @@ from troposphere.cloudfront import (
 )
 from stacker.blueprints.base import Blueprint
 
-class CFN(Blueprint):
+class cloudfront_s3_only(Blueprint):
     def create_s3_bucket(self):
-        self.s3Bucket = self.add_resource(Bucket(
+        t = self.template
+        self.s3Bucket = t.add_resource(Bucket(
             "S3Bucket",
             AccessControl=PublicRead,
             WebsiteConfiguration=WebsiteConfiguration(
@@ -19,7 +20,7 @@ class CFN(Blueprint):
                 ErrorDocument="error.html"
                 )
             ))
-        self.add_output([
+        t.add_output([
             Output(
                 "WebsiteURL",
                 Value=GetAtt(self.s3Bucket, "WebsiteURL"),
