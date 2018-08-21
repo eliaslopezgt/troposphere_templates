@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'cake --version'
+                sh 'build.sh'
             }
         }
     }
