@@ -15,7 +15,7 @@ general_parameters: &general_parameters
   InternalDomain: ${InternalDomain}
 
 stacks:
-  - name: cloudfront_s3_only
+  - name: cloudfrontS3Only
     class_path: blueprints.cloudfront_s3_only.cloudfront_s3_only
     enabled: true
     variables:

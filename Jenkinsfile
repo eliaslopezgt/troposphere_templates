@@ -5,7 +5,10 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'build.sh'
+                sh '''
+                    chmod +x build.sh
+                    ./build.sh
+                    '''
             }
         }
     }
