@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'pwsh ./build.ps1'
+                sh './build.sh'
             }
         }
     }
