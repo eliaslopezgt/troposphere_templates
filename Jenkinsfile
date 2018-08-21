@@ -1,11 +1,11 @@
 pipeline {
     agent {
-        docker { image 'node:7-alpine' }
+        docker { image 'cakebuild/cake' }
     }
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
+                sh 'cake --version'
             }
         }
     }
