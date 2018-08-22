@@ -9,5 +9,13 @@ pipeline {
                 sh './build.sh'
             }
         }
+        stage('Terraform') {
+            agent {
+                docker { image 'hashicorp/terraform:latest'}
+            }
+            steps {
+                sh 'terraform init'
+            }
+        }
     }
 }
