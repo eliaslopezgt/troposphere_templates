@@ -10,11 +10,9 @@ pipeline {
             }
         }
         stage('Terraform') {
-            agent {
-                docker { image 'hashicorp/terraform:latest'}
-            }
+            agent any
             steps {
-                sh 'terraform init'
+                sh 'docker run -i -t hashicorp/terraform:light init'
             }
         }
     }
