@@ -1,14 +1,12 @@
 pipeline {
-    agent none
+    agent any
     stages {
         stage('Prepare workspace') {
-            agent none
             steps {
                 sh 'echo 1'
             }
         }
         stage('Build container') {
-            agent none
             steps {
                 sh 'echo 2'
             }
